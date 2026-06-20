@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aditya Sharma - Personal Portfolio
+
+A premium, production-ready portfolio built with Next.js 15, Tailwind CSS v4, and Framer Motion. Designed to showcase my work as an AI Engineer and Full-Stack Developer.
+
+## Features
+
+- ⚡️ **Next.js 15 App Router** - Utilizing the latest React features and Server Components.
+- 🎨 **Tailwind CSS v4** - Custom CSS-first theme configuration for dark/light mode.
+- 🪄 **Framer Motion** - Smooth page transitions, scroll animations, and interactive elements.
+- 🐙 **GitHub API Integration** - Live statistics and dynamic project fetching with ISR caching.
+- 📝 **MDX Blog** - Markdown-based blog with custom syntax highlighting and reading time.
+- 🚀 **Premium UI/UX** - Custom cursor, command palette, reading progress, and cinematic loading screen.
+- 📧 **Resend Integration** - Functional contact form.
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (React 19)
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Typography:** Geist (Next Font)
+- **Deployment:** Vercel
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AdityaSh-sys/portfolio.git
+   cd portfolio
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Set up environment variables:
+   Copy `.env.example` to `.env.local` and add your keys:
+   ```bash
+   cp .env.example .env.local
+   ```
+   - `NEXT_PUBLIC_GITHUB_USERNAME`: Your GitHub username (e.g., `AdityaSh-sys`)
+   - `GITHUB_TOKEN`: A GitHub Personal Access Token (for higher rate limits)
+   - `RESEND_API_KEY`: API key from Resend for the contact form
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+- **Data:** Edit `src/data/projects.ts` and `src/data/experience.ts` to update the content.
+- **Theme:** Modify `src/app/globals.css` to change colors, fonts, and the Tailwind v4 theme variables.
+- **Blog:** Add `.mdx` files to `content/blog/` to create new blog posts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License. Developed by Aditya Sharma.
