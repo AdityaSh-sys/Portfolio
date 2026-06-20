@@ -46,7 +46,7 @@ export default function HeroSection() {
               <TextReveal delay={0.5}>Sharma.</TextReveal>
             </h1>
 
-            <BlurFade delay={0.8} className="h-[40px] md:h-[50px] overflow-hidden mb-6 flex items-center">
+            <BlurFade delay={0.8} className="h-[50px] md:h-[60px] lg:h-[70px] overflow-hidden mb-6 flex items-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={roleIndex}
@@ -101,9 +101,9 @@ export default function HeroSection() {
               <div className="absolute inset-0 rounded-3xl overflow-hidden glass border border-border/50 shadow-2xl z-10">
                 {/* Fallback gradient if image fails, but image is required */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-purple-500/20" />
-                {/* Add your photo to public/images/portrait.jpg */}
+                {/* You can now upload your photo to Vercel Storage (Blob) and set NEXT_PUBLIC_PORTRAIT_URL in your .env */}
                 <Image
-                  src="/images/portrait.jpg" 
+                  src={process.env.NEXT_PUBLIC_PORTRAIT_URL || "/images/portrait.jpg"} 
                   alt="Aditya Sharma"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
