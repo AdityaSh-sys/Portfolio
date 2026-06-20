@@ -12,6 +12,13 @@ const ROLES = ["AI Engineer", "Full-Stack Developer", "Product Builder"];
 
 export default function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
+  const [portraitError, setPortraitError] = useState(false);
+
+  const portraitImageUrl =
+    process.env.NEXT_PUBLIC_PORTRAIT_URL ||
+    process.env.NEXT_PUBLIC_BLOB_URL ||
+    process.env.NEXT_PUBLIC_PROFILE_IMAGE_URL ||
+    "";
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,10 +47,10 @@ export default function HeroSection() {
               </span>
             </FadeIn>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 leading-tight">
-              <TextReveal delay={0.3}>I&apos;m Aditya</TextReveal>
-              <br />
-              <TextReveal delay={0.5}>Sharma.</TextReveal>
+            <h1 className="max-w-4xl text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[0.92] text-balance">
+              <TextReveal delay={0.3} className="inline-block">
+                I&apos;m Aditya Sharma.
+              </TextReveal>
             </h1>
 
             <BlurFade delay={0.8} className="h-[50px] md:h-[60px] lg:h-[70px] overflow-hidden mb-6 flex items-center">
@@ -99,21 +106,29 @@ export default function HeroSection() {
           <div className="hidden lg:flex justify-center items-center relative">
             <FadeIn delay={0.5} duration={1.5} className="relative w-full max-w-md aspect-[4/5] z-10">
               <div className="absolute inset-0 rounded-3xl overflow-hidden glass border border-border/50 shadow-2xl z-10">
-                {/* Fallback gradient if image fails, but image is required */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-purple-500/20" />
-                {/* You can now upload your photo to Vercel Storage (Blob) and set NEXT_PUBLIC_PORTRAIT_URL in your .env */}
-                <Image
-                  src={process.env.NEXT_PUBLIC_PORTRAIT_URL || "/images/portrait.jpg"} 
-                  alt="Aditya Sharma"
-                  fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  onError={(e) => {
-                    // Fallback to gradient mesh if image is missing
-                    e.currentTarget.style.opacity = '0';
-                  }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-sky-400/10 to-fuchsia-400/20" />
+                {portraitImageUrl && !portraitError ? (
+                  <Image
+                    src={portraitImageUrl}
+                    alt="Aditya Sharma"
+                    fill
+                    className="object-cover object-top transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                    onError={() => setPortraitError(true)}
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-end p-6 md:p-8">
+                    <div className="max-w-xs rounded-2xl border border-white/15 bg-black/10 p-4 backdrop-blur-md">
+                      <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                        Portrait ready
+                      </p>
+                      <p className="mt-2 text-sm md:text-base text-foreground/90 leading-relaxed">
+                        Add your Blob URL to NEXT_PUBLIC_PORTRAIT_URL and the hero will render your photo here.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
               
               {/* Decorative Elements */}

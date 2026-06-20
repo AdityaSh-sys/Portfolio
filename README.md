@@ -40,6 +40,8 @@ A premium, production-ready portfolio built with Next.js 15, Tailwind CSS v4, an
    cp .env.example .env.local
    ```
    - `NEXT_PUBLIC_GITHUB_USERNAME`: Your GitHub username (e.g., `AdityaSh-sys`)
+   - `NEXT_PUBLIC_PORTRAIT_URL`: Public URL for your portrait image, such as a Vercel Blob URL
+   - `NEXT_PUBLIC_BLOB_URL` or `NEXT_PUBLIC_PROFILE_IMAGE_URL`: Optional aliases accepted by the hero section
    - `GITHUB_TOKEN`: A GitHub Personal Access Token (for higher rate limits)
    - `RESEND_API_KEY`: API key from Resend for the contact form
 
